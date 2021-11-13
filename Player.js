@@ -2,6 +2,8 @@ class Player {
     constructor(x, y) {
         this.x = x;
         this.y = y;
+        this.mov = false;
+        this.dir = true;
     }
     draw() {
         rectMode(CENTER);
@@ -15,16 +17,29 @@ class Player {
         fill(255);
         rectMode(CORNER);
     }
-    get getX(){
+    move() {
+        if (this.mov === true) {
+            if (this.dir === true) {
+                this.x=this.x+5;
+            }
+        }
+    }
+    getX() {
         return this.x;
     }
-    set setX(px){
+    setX(px) {
         this.x = px;
     }
-    get getY(){
+    getY() {
         return this.y;
     }
-    set setY(py){
+    setY(py) {
         this.y = py;
+    }
+    setDir(newDir) {
+        this.dir = newDir;
+    }
+    setMov(mov) {
+        this.mov = mov;
     }
 }

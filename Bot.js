@@ -15,16 +15,16 @@ class Bot {
         fill(255);
         rectMode(CORNER);
     }
-    get getX(){
+    getX(){
         return this.x;
     }
-    set setX(px){
+    setX(px){
         this.x = px;
     }
-    get getY(){
+    getY(){
         return this.y;
     }
-    set setY(py){
+    setY(py){
         this.y = py;
     }
 }

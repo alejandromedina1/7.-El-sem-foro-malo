@@ -3,7 +3,7 @@ let bot = []
 bot[0] = new Bot(110, 50);
 
 for (let i = 1; i < 4; i++) {
-  bot[i] = new Bot(bot[i - 1].getX + 60, Math.random() * 400);
+  bot[i] = new Bot(bot[i - 1].getX() + 60, Math.random() * 400);
 
 }
 
@@ -20,21 +20,35 @@ function draw() {
   fill(255);
   stroke(0);
   player.draw();
+  player.move();
   for (let i = 0; i < 4; i++) {
     bot[i].draw();
-    bot[i].setY = bot[i].getY + Math.random() * 10;
-    if (450 < bot[i].getY) {
-      bot[i].setY = -20
+    bot[i].setY(bot[i].getY() + Math.random() * 10);
+    if (450 < bot[i].getY()) {
+      bot[i].setY(-20)
     }
+  }
+
+  for (let i = 0; i < 4; i++) {
+    if (dist(player.getX(),player.getY(),bot[i].getX(),bot[i].getY())<50) {
+      player.setX(50);
+      player.setDir(false);
+    }
+  }
+
+  if ( 400 < player.getX()) {
+    player.setX(50);
+    player.setDir(false);
   }
 }
 
 function keyPressed() {
   if (key === "a" || key === "A") {
-    player.setX = player.setX - 1;
+    player.setDir(false);
   }
 
   if (key === "d" || key === "D") {
-    player.setX = player.setX + 1;
+    player.setDir(true);
+    player.setMov(true);
   }
 }
