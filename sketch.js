@@ -33,12 +33,14 @@ function draw() {
     if (dist(player.getX(),player.getY(),bot[i].getX(),bot[i].getY())<50) {
       player.setX(50);
       player.setDir(false);
+      alert("You lost");
     }
   }
 
   if ( 400 < player.getX()) {
     player.setX(50);
     player.setDir(false);
+    alert("You win");
   }
 }
 
